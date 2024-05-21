@@ -1,9 +1,6 @@
 package project.studentmanagerproject.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "student")
@@ -11,7 +8,9 @@ public class Student {
     @Id
     @GeneratedValue
     private int id;
+    @Column(name = "first_name")
     private String firstname;
+    @Column(name = "last_name")
     private String lastname;
     private String email;
     private int birth;
