@@ -1,5 +1,6 @@
 package project.studentmanagerproject.entity;
 
+
 import jakarta.persistence.*;
 
 @Entity
