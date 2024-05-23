@@ -7,10 +7,18 @@
 <body>
 <table>
     <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Birth</th>
+        <th>
+            First name
+        </th>
+        <th>
+            Last name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Birth
+        </th>
         <th>Action</th>
     </tr>
     <tr th:each="student : ${students}">
@@ -30,5 +38,27 @@
         </td>
     </tr>
 </table>
+<div th:if = "${totalPages > 1}">
+    <div>
+        <div>
+            Total Rows: [[${totalItems}]]
+        </div>
+        <div>
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/students/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+        </div>
+        <div>
+            <a th:if="${currentPage < totalPages}" th:href="@{'/students/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+            <span th:unless="${currentPage < totalPages}">Next</span>
+        </div>
+
+        <div>
+            <a th:if="${currentPage < totalPages}" th:href="@{'/students/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+            <span th:unless="${currentPage < totalPages}">Last</span>
+        </div>
+    </div>
+</div>
 </body>
 </html>

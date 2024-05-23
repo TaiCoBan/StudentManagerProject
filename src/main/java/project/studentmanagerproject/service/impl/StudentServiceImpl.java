@@ -1,6 +1,10 @@
 package project.studentmanagerproject.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import project.studentmanagerproject.entity.Student;
 import project.studentmanagerproject.repository.StudentRepository;
@@ -45,6 +49,12 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void deleteStudent(int id) {
         studentRepository.delete(studentRepository.findStudentById(id));
+    }
+
+    @Override
+    public Page<Student> findPaginated(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.studentRepository.findAll(pageable);
     }
 
 }
