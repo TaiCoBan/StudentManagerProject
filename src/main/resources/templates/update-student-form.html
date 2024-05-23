@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Student Form</title>
+</head>
+<body>
+<h2>Update Student Form</h2>
+<form th:object="${student}" th:action="@{/students/update-student}" method="post">
+    <input type="hidden" th:field="*{id}">
+
+    <label>First name:</label><br>
+    <input type="text" th:field="*{firstname}"><br><br>
+
+    <label>Last name:</label><br>
+    <input type="text" th:field="*{lastname}"><br><br>
+
+    <label>Email:</label><br>
+    <input type="text" th:field="*{email}"><br><br>
+
+    <label>Birth:</label><br>
+    <input type="text" th:field="*{birth}"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

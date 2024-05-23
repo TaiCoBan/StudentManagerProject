@@ -11,12 +11,23 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Birth</th>
+        <th>Action</th>
     </tr>
     <tr th:each="student : ${students}">
         <td th:text="${student.firstname}"></td>
         <td th:text="${student.lastname}"></td>
         <td th:text="${student.email}"></td>
         <td th:text="${student.birth}"></td>
+        <td>
+            <form method="get" th:action="@{/students/update-student}">
+                <input type="hidden" name="id" th:value="${student.id}">
+                <button type="submit">Update</button>
+            </form>
+            <form method="get" th:action="@{/students/update-student}">
+                <input type="hidden" name="id" th:value="${student.id}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
     </tr>
 </table>
 </body>
