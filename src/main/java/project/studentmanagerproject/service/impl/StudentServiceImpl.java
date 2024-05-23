@@ -14,9 +14,8 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository studentRepository;
     @Override
-    public String addStudent(Student student) {
+    public void addStudent(Student student) {
         studentRepository.save(student);
-        return "Student Added Successfully ! ";
     }
 
     @Override
@@ -41,6 +40,11 @@ public class StudentServiceImpl implements StudentService {
             exist.setBirth(student.getBirth());
             studentRepository.save(exist);
         }
+    }
+
+    @Override
+    public void deleteStudent(int id) {
+        studentRepository.delete(studentRepository.findStudentById(id));
     }
 
 }

@@ -23,7 +23,7 @@
                 <input type="hidden" name="id" th:value="${student.id}">
                 <button type="submit">Update</button>
             </form>
-            <form method="get" th:action="@{/students/update-student}">
+            <form method="post" th:action="@{/students/delete-student}">
                 <input type="hidden" name="id" th:value="${student.id}">
                 <button type="submit">Delete</button>
             </form>
